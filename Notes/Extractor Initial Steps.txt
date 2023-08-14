@@ -1,0 +1,20 @@
+1. Initially api is retrieved from the os.environ of the user who created the code, If this is not available simply replace hte 'os.environ.get('BODS_API_KEY')' 
+   with your own unique api_key from your gov.uk account 
+
+2. Once you have your api and object instance is initiated with the desired parameters for the API request
+
+3. The python __init__ method is declared within the extractor class and is used to initialize the attributes passed through for the API
+
+4. Default __init__ (timetable example, will need changed for Fares)
+
+def __init__(self, api_key, limit=10_000, offset=0, nocs=None, status='published',
+                 search=None, bods_compliant=True, atco_code=None, service_line_level=False,
+                 stop_level=False, threaded=False):
+
+5. Pull timetable Data ()
+
+    Create the fare dataset metadata dataframe and assign it to self.metadata
+
+    i. _get_timetable_datasets()
+
+    
