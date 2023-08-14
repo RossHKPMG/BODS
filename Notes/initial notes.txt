@@ -1,6 +1,6 @@
 BODS
 
-Digital platform whichc consumes published data sets for timetables/locations of buses
+Digital platform which consumes published data sets for timetables/locations of buses
 
 processes it
 
