@@ -1,0 +1,181 @@
+,Grouped Route IDs,Route ID,From ID,From - Common Name,From - Longitude,From - Latitude,To ID,To - Common Name,To - Longitude,To - Latitude
+0,rsf_0000,rl_0000_1,450018214,F3 Station Lane Crossley Street,-1.358644,53.676820,450017712,Wakefield Road F2 St Martins Close,-1.361566,53.674831
+3,rsf_0000,rl_0000_2,450017712,Wakefield Road F2 St Martins Close,-1.361566,53.674831,450017714,Wakefield Road Lister Road,-1.364998,53.675110
+6,rsf_0000,rl_0000_3,450017714,Wakefield Road Lister Road,-1.364998,53.675110,450017722,Wentworth Road Hillcrest Avenue,-1.370239,53.674850
+9,rsf_0000,rl_0000_4,450017722,Wentworth Road Hillcrest Avenue,-1.370239,53.674850,450017720,Wentworth Road Southfield Avenue,-1.370896,53.673478
+12,rsf_0000,rl_0000_5,450017720,Wentworth Road Southfield Avenue,-1.370896,53.673478,450023759,Wentworth Road Priordale Road,-1.370528,53.672766
+15,rsf_0000,rl_0000_6,450023759,Wentworth Road Priordale Road,-1.370528,53.672766,450029064,Priory Road Huntwick Drive,-1.367577,53.672715
+18,rsf_0000,rl_0000_7,450029064,Priory Road Huntwick Drive,-1.367577,53.672715,450017716,Priory Road Hardwick Road,-1.363935,53.673298
+21,rsf_0000,rl_0000_8,450017716,Priory Road Hardwick Road,-1.363935,53.673298,450017715,Priory Road Girnhill Lane,-1.360723,53.673505
+24,rsf_0000,rl_0000_9,450017715,Priory Road Girnhill Lane,-1.360723,53.673505,450017711,F5 Pontefract Road Brookway,-1.357317,53.674530
+27,rsf_0000,rl_0000_10,450017711,F5 Pontefract Road Brookway,-1.357317,53.674530,450018398,Pontefract Road Hall Street,-1.351676,53.674176
+29,rsf_0000,rl_0000_11,450018398,Pontefract Road Hall Street,-1.351676,53.674176,450018205,Wentbridge Road Wellgarth Rd,-1.348583,53.671552
+31,rsf_0000,rl_0000_12,450018205,Wentbridge Road Wellgarth Rd,-1.348583,53.671552,450018207,Wentbridge Road Little Lane,-1.345527,53.672417
+33,rsf_0000,rl_0000_13,450018207,Wentbridge Road Little Lane,-1.345527,53.672417,450018209,Little Lane Tarn Road,-1.347463,53.673479
+35,rsf_0000,rl_0000_14,450018209,Little Lane Tarn Road,-1.347463,53.673479,450018395,Pontefract Road Purston Sports Centre,-1.345537,53.674682
+37,rsf_0000,rl_0000_15,450018395,Pontefract Road Purston Sports Centre,-1.345537,53.674682,450018392,Pontefract Road Houndhill Lane,-1.340322,53.677134
+39,rsf_0000,rl_0000_16,450018392,Pontefract Road Houndhill Lane,-1.340322,53.677134,450025260,Pontefract Road Monkroyd Cottage,-1.337550,53.679168
+41,rsf_0000,rl_0000_17,450025260,Pontefract Road Monkroyd Cottage,-1.337550,53.679168,450023834,Wakefield Road Osgoldcross Crematorium,-1.332177,53.681960
+43,rsf_0000,rl_0000_18,450023834,Wakefield Road Osgoldcross Crematorium,-1.332177,53.681960,450018278,Wakefield Road Queens Avenue,-1.325827,53.685188
+45,rsf_0000,rl_0000_19,450018278,Wakefield Road Queens Avenue,-1.325827,53.685188,450018275,Wakefield Road Drivers Row,-1.323263,53.686414
+47,rsf_0000,rl_0000_20,450018275,Wakefield Road Drivers Row,-1.323263,53.686414,450018274,Wakefield Road Beechwood Crescent,-1.321388,53.687185
+49,rsf_0000,rl_0000_21,450018274,Wakefield Road Beechwood Crescent,-1.321388,53.687185,450018272,Wakefield Road Banks Avenue,-1.318390,53.688130
+51,rsf_0000,rl_0000_22,450018272,Wakefield Road Banks Avenue,-1.318390,53.688130,450018271,Southgate Jubilee Way,-1.312902,53.689491
+53,rsf_0000,rl_0000_23,450018271,Southgate Jubilee Way,-1.312902,53.689491,450018268,Southgate General Hospital,-1.309820,53.690903
+55,rsf_0000,rl_0000_24,450018268,Southgate General Hospital,-1.309820,53.690903,450030267,Stand J Pontefract Bus Station,-1.308757,53.692919
+57,rsf_0001,rl_0001_1,450030332,Castleford Bus Station A,-1.357399,53.724837,450018667,S2 Station Road,-1.353178,53.725345
+59,rsf_0001,rl_0001_2,450018667,S2 Station Road,-1.353178,53.725345,450018682,Lower Oxford Street Beancroft Road,-1.355184,53.723010
+61,rsf_0001,rl_0001_3,450018682,Lower Oxford Street Beancroft Road,-1.355184,53.723010,450014654,Beancroft Road Hugh Street,-1.355550,53.721879
+63,rsf_0001,rl_0001_4,450014654,Beancroft Road Hugh Street,-1.355550,53.721879,450014652,Smawthorne Lane Smawthorne Avenue,-1.352938,53.721191
+65,rsf_0001,rl_0001_5,450014652,Smawthorne Lane Smawthorne Avenue,-1.352938,53.721191,450050204,Smawthorne Lane Lisheen Avenue,-1.349409,53.722053
+67,rsf_0001,rl_0001_6,450050204,Smawthorne Lane Lisheen Avenue,-1.349409,53.722053,450014650,Lisheen Avenue Parklands,-1.348312,53.721490
+69,rsf_0001,rl_0001_7,450014650,Lisheen Avenue Parklands,-1.348312,53.721490,450014649,Lisheen Avenue Blands Close,-1.348712,53.720126
+71,rsf_0001,rl_0001_8,450014649,Lisheen Avenue Blands Close,-1.348712,53.720126,450014646,Lisheen Avenue Willow Road,-1.348362,53.718218
+73,rsf_0001,rl_0001_9,450014646,Lisheen Avenue Willow Road,-1.348362,53.718218,450014644,Lisheen Avenue Leeds Road,-1.347011,53.716404
+75,rsf_0001,rl_0001_10,450014644,Lisheen Avenue Leeds Road,-1.347011,53.716404,450014640,Leeds Road Joffre Avenue,-1.348331,53.715360
+77,rsf_0001,rl_0001_11,450014640,Leeds Road Joffre Avenue,-1.348331,53.715360,450025743,Leeds Road Thunderhead Ridge,-1.351686,53.713922
+79,rsf_0001,rl_0001_12,450025743,Leeds Road Thunderhead Ridge,-1.351686,53.713922,450025739,Leeds Road Barnes Road,-1.356148,53.714422
+81,rsf_0001,rl_0001_13,450025739,Leeds Road Barnes Road,-1.356148,53.714422,450025240,Leeds Road Old School Court,-1.360119,53.714390
+83,rsf_0001,rl_0001_14,450025240,Leeds Road Old School Court,-1.360119,53.714390,450014635,Leeds Road Granville Street,-1.362874,53.714521
+85,rsf_0001,rl_0001_15,450014635,Leeds Road Granville Street,-1.362874,53.714521,450018235,Aketon Road WMC,-1.366076,53.713190
+87,rsf_0001,rl_0001_16,450018235,Aketon Road WMC,-1.366076,53.713190,450029628,Cutsyke Road Blenheim Way,-1.367467,53.709332
+89,rsf_0001,rl_0001_17,450029628,Cutsyke Road Blenheim Way,-1.367467,53.709332,450050590,Cutsyke Road Castleford Lane,-1.367837,53.706943
+91,rsf_0001,rl_0001_18,450050590,Cutsyke Road Castleford Lane,-1.367837,53.706943,450018233,Cutsyke Road Cemetery,-1.363355,53.697752
+93,rsf_0001,rl_0001_19,450018233,Cutsyke Road Cemetery,-1.363355,53.697752,450018231,Willow Lane Church Lane,-1.361125,53.695960
+95,rsf_0001,rl_0001_20,450018231,Willow Lane Church Lane,-1.361125,53.695960,450018227,Featherstone Lane Highfield Close,-1.356833,53.690364
+97,rsf_0001,rl_0001_21,450018227,Featherstone Lane Highfield Close,-1.356833,53.690364,450018225,Featherstone Lane Carlton Street,-1.354283,53.686818
+99,rsf_0001,rl_0001_22,450018225,Featherstone Lane Carlton Street,-1.354283,53.686818,450023711,Featherstone Lane Gordon Street,-1.353888,53.684929
+101,rsf_0001,rl_0001_23,450023711,Featherstone Lane Gordon Street,-1.353888,53.684929,450018221,Green Lane Jardine Avenue,-1.354093,53.682413
+103,rsf_0001,rl_0001_24,450018221,Green Lane Jardine Avenue,-1.354093,53.682413,450018220,Green Lane Market Street,-1.357647,53.681641
+105,rsf_0001,rl_0001_25,450018220,Green Lane Market Street,-1.357647,53.681641,450018217,Station Lane Cedar Walk,-1.358625,53.680109
+107,rsf_0001,rl_0001_26,450018217,Station Lane Cedar Walk,-1.358625,53.680109,450018216,Station Lane Featherstone Station,-1.358347,53.678436
+109,rsf_0001,rl_0001_27,450018216,Station Lane Featherstone Station,-1.358347,53.678436,450018214,F3 Station Lane Crossley Street,-1.358644,53.676820
+1,rsf_0001,rl_0001_28,450018214,F3 Station Lane Crossley Street,-1.358644,53.676820,450017712,Wakefield Road F2 St Martins Close,-1.361566,53.674831
+4,rsf_0001,rl_0001_29,450017712,Wakefield Road F2 St Martins Close,-1.361566,53.674831,450017714,Wakefield Road Lister Road,-1.364998,53.675110
+7,rsf_0001,rl_0001_30,450017714,Wakefield Road Lister Road,-1.364998,53.675110,450017722,Wentworth Road Hillcrest Avenue,-1.370239,53.674850
+10,rsf_0001,rl_0001_31,450017722,Wentworth Road Hillcrest Avenue,-1.370239,53.674850,450017720,Wentworth Road Southfield Avenue,-1.370896,53.673478
+13,rsf_0001,rl_0001_32,450017720,Wentworth Road Southfield Avenue,-1.370896,53.673478,450023759,Wentworth Road Priordale Road,-1.370528,53.672766
+16,rsf_0001,rl_0001_33,450023759,Wentworth Road Priordale Road,-1.370528,53.672766,450029064,Priory Road Huntwick Drive,-1.367577,53.672715
+19,rsf_0001,rl_0001_34,450029064,Priory Road Huntwick Drive,-1.367577,53.672715,450017716,Priory Road Hardwick Road,-1.363935,53.673298
+22,rsf_0001,rl_0001_35,450017716,Priory Road Hardwick Road,-1.363935,53.673298,450017715,Priory Road Girnhill Lane,-1.360723,53.673505
+25,rsf_0001,rl_0001_36,450017715,Priory Road Girnhill Lane,-1.360723,53.673505,450017711,F5 Pontefract Road Brookway,-1.357317,53.674530
+28,rsf_0001,rl_0001_37,450017711,F5 Pontefract Road Brookway,-1.357317,53.674530,450018398,Pontefract Road Hall Street,-1.351676,53.674176
+30,rsf_0001,rl_0001_38,450018398,Pontefract Road Hall Street,-1.351676,53.674176,450018205,Wentbridge Road Wellgarth Rd,-1.348583,53.671552
+32,rsf_0001,rl_0001_39,450018205,Wentbridge Road Wellgarth Rd,-1.348583,53.671552,450018207,Wentbridge Road Little Lane,-1.345527,53.672417
+34,rsf_0001,rl_0001_40,450018207,Wentbridge Road Little Lane,-1.345527,53.672417,450018209,Little Lane Tarn Road,-1.347463,53.673479
+36,rsf_0001,rl_0001_41,450018209,Little Lane Tarn Road,-1.347463,53.673479,450018395,Pontefract Road Purston Sports Centre,-1.345537,53.674682
+38,rsf_0001,rl_0001_42,450018395,Pontefract Road Purston Sports Centre,-1.345537,53.674682,450018392,Pontefract Road Houndhill Lane,-1.340322,53.677134
+40,rsf_0001,rl_0001_43,450018392,Pontefract Road Houndhill Lane,-1.340322,53.677134,450025260,Pontefract Road Monkroyd Cottage,-1.337550,53.679168
+42,rsf_0001,rl_0001_44,450025260,Pontefract Road Monkroyd Cottage,-1.337550,53.679168,450023834,Wakefield Road Osgoldcross Crematorium,-1.332177,53.681960
+44,rsf_0001,rl_0001_45,450023834,Wakefield Road Osgoldcross Crematorium,-1.332177,53.681960,450018278,Wakefield Road Queens Avenue,-1.325827,53.685188
+46,rsf_0001,rl_0001_46,450018278,Wakefield Road Queens Avenue,-1.325827,53.685188,450018275,Wakefield Road Drivers Row,-1.323263,53.686414
+48,rsf_0001,rl_0001_47,450018275,Wakefield Road Drivers Row,-1.323263,53.686414,450018274,Wakefield Road Beechwood Crescent,-1.321388,53.687185
+50,rsf_0001,rl_0001_48,450018274,Wakefield Road Beechwood Crescent,-1.321388,53.687185,450018272,Wakefield Road Banks Avenue,-1.318390,53.688130
+52,rsf_0001,rl_0001_49,450018272,Wakefield Road Banks Avenue,-1.318390,53.688130,450018271,Southgate Jubilee Way,-1.312902,53.689491
+54,rsf_0001,rl_0001_50,450018271,Southgate Jubilee Way,-1.312902,53.689491,450018268,Southgate General Hospital,-1.309820,53.690903
+56,rsf_0001,rl_0001_51,450018268,Southgate General Hospital,-1.309820,53.690903,450030267,Stand J Pontefract Bus Station,-1.308757,53.692919
+58,rsf_0002,rl_0002_1,450030332,Castleford Bus Station A,-1.357399,53.724837,450018667,S2 Station Road,-1.353178,53.725345
+60,rsf_0002,rl_0002_2,450018667,S2 Station Road,-1.353178,53.725345,450018682,Lower Oxford Street Beancroft Road,-1.355184,53.723010
+62,rsf_0002,rl_0002_3,450018682,Lower Oxford Street Beancroft Road,-1.355184,53.723010,450014654,Beancroft Road Hugh Street,-1.355550,53.721879
+64,rsf_0002,rl_0002_4,450014654,Beancroft Road Hugh Street,-1.355550,53.721879,450014652,Smawthorne Lane Smawthorne Avenue,-1.352938,53.721191
+66,rsf_0002,rl_0002_5,450014652,Smawthorne Lane Smawthorne Avenue,-1.352938,53.721191,450050204,Smawthorne Lane Lisheen Avenue,-1.349409,53.722053
+68,rsf_0002,rl_0002_6,450050204,Smawthorne Lane Lisheen Avenue,-1.349409,53.722053,450014650,Lisheen Avenue Parklands,-1.348312,53.721490
+70,rsf_0002,rl_0002_7,450014650,Lisheen Avenue Parklands,-1.348312,53.721490,450014649,Lisheen Avenue Blands Close,-1.348712,53.720126
+72,rsf_0002,rl_0002_8,450014649,Lisheen Avenue Blands Close,-1.348712,53.720126,450014646,Lisheen Avenue Willow Road,-1.348362,53.718218
+74,rsf_0002,rl_0002_9,450014646,Lisheen Avenue Willow Road,-1.348362,53.718218,450014644,Lisheen Avenue Leeds Road,-1.347011,53.716404
+76,rsf_0002,rl_0002_10,450014644,Lisheen Avenue Leeds Road,-1.347011,53.716404,450014640,Leeds Road Joffre Avenue,-1.348331,53.715360
+78,rsf_0002,rl_0002_11,450014640,Leeds Road Joffre Avenue,-1.348331,53.715360,450025743,Leeds Road Thunderhead Ridge,-1.351686,53.713922
+80,rsf_0002,rl_0002_12,450025743,Leeds Road Thunderhead Ridge,-1.351686,53.713922,450025739,Leeds Road Barnes Road,-1.356148,53.714422
+82,rsf_0002,rl_0002_13,450025739,Leeds Road Barnes Road,-1.356148,53.714422,450025240,Leeds Road Old School Court,-1.360119,53.714390
+84,rsf_0002,rl_0002_14,450025240,Leeds Road Old School Court,-1.360119,53.714390,450014635,Leeds Road Granville Street,-1.362874,53.714521
+86,rsf_0002,rl_0002_15,450014635,Leeds Road Granville Street,-1.362874,53.714521,450018235,Aketon Road WMC,-1.366076,53.713190
+88,rsf_0002,rl_0002_16,450018235,Aketon Road WMC,-1.366076,53.713190,450029628,Cutsyke Road Blenheim Way,-1.367467,53.709332
+90,rsf_0002,rl_0002_17,450029628,Cutsyke Road Blenheim Way,-1.367467,53.709332,450050590,Cutsyke Road Castleford Lane,-1.367837,53.706943
+92,rsf_0002,rl_0002_18,450050590,Cutsyke Road Castleford Lane,-1.367837,53.706943,450018233,Cutsyke Road Cemetery,-1.363355,53.697752
+94,rsf_0002,rl_0002_19,450018233,Cutsyke Road Cemetery,-1.363355,53.697752,450018231,Willow Lane Church Lane,-1.361125,53.695960
+96,rsf_0002,rl_0002_20,450018231,Willow Lane Church Lane,-1.361125,53.695960,450018227,Featherstone Lane Highfield Close,-1.356833,53.690364
+98,rsf_0002,rl_0002_21,450018227,Featherstone Lane Highfield Close,-1.356833,53.690364,450018225,Featherstone Lane Carlton Street,-1.354283,53.686818
+100,rsf_0002,rl_0002_22,450018225,Featherstone Lane Carlton Street,-1.354283,53.686818,450023711,Featherstone Lane Gordon Street,-1.353888,53.684929
+102,rsf_0002,rl_0002_23,450023711,Featherstone Lane Gordon Street,-1.353888,53.684929,450018221,Green Lane Jardine Avenue,-1.354093,53.682413
+104,rsf_0002,rl_0002_24,450018221,Green Lane Jardine Avenue,-1.354093,53.682413,450018220,Green Lane Market Street,-1.357647,53.681641
+106,rsf_0002,rl_0002_25,450018220,Green Lane Market Street,-1.357647,53.681641,450018217,Station Lane Cedar Walk,-1.358625,53.680109
+108,rsf_0002,rl_0002_26,450018217,Station Lane Cedar Walk,-1.358625,53.680109,450018216,Station Lane Featherstone Station,-1.358347,53.678436
+110,rsf_0002,rl_0002_27,450018216,Station Lane Featherstone Station,-1.358347,53.678436,450018214,F3 Station Lane Crossley Street,-1.358644,53.676820
+111,rsf_0003,rl_0003_1,450018213,F4 Station Lane Fearnley Street,-1.359054,53.675743,450018215,Station Lane Featherstone Station,-1.358529,53.678437
+113,rsf_0003,rl_0003_2,450018215,Station Lane Featherstone Station,-1.358529,53.678437,450018218,Station Lane Cedar Walk,-1.358892,53.680443
+115,rsf_0003,rl_0003_3,450018218,Station Lane Cedar Walk,-1.358892,53.680443,450018219,Green Lane Market Street,-1.357645,53.681776
+117,rsf_0003,rl_0003_4,450018219,Green Lane Market Street,-1.357645,53.681776,450018222,Featherstone Lane Dickinson Terrace,-1.353656,53.683256
+119,rsf_0003,rl_0003_5,450018222,Featherstone Lane Dickinson Terrace,-1.353656,53.683256,450018224,Featherstone Lane Dixon Street,-1.354094,53.685325
+121,rsf_0003,rl_0003_6,450018224,Featherstone Lane Dixon Street,-1.354094,53.685325,450018226,Featherstone Lane Halton Street,-1.354581,53.687117
+123,rsf_0003,rl_0003_7,450018226,Featherstone Lane Halton Street,-1.354581,53.687117,450018228,Featherstone Lane Highfield Close,-1.357178,53.690627
+125,rsf_0003,rl_0003_8,450018228,Featherstone Lane Highfield Close,-1.357178,53.690627,450018229,Willow Lane Willow Garth,-1.358874,53.693611
+127,rsf_0003,rl_0003_9,450018229,Willow Lane Willow Garth,-1.358874,53.693611,450018230,Cutsyke Road Church Lane,-1.361248,53.695844
+129,rsf_0003,rl_0003_10,450018230,Cutsyke Road Church Lane,-1.361248,53.695844,450026333,Cutsyke Road Cemetery,-1.363746,53.697925
+131,rsf_0003,rl_0003_11,450026333,Cutsyke Road Cemetery,-1.363746,53.697925,450018234,Cutsyke Road Castleford Lane,-1.368003,53.706953
+133,rsf_0003,rl_0003_12,450018234,Cutsyke Road Castleford Lane,-1.368003,53.706953,450029629,Cutsyke Road Blenheim Way,-1.367495,53.710537
+135,rsf_0003,rl_0003_13,450029629,Cutsyke Road Blenheim Way,-1.367495,53.710537,450018236,Aketon Road WMC,-1.365554,53.713646
+137,rsf_0003,rl_0003_14,450018236,Aketon Road WMC,-1.365554,53.713646,450014636,Leeds Road Old School Ct,-1.360571,53.714509
+139,rsf_0003,rl_0003_15,450014636,Leeds Road Old School Ct,-1.360571,53.714509,450014637,Leeds Road Barnes Road,-1.356178,53.714494
+141,rsf_0003,rl_0003_16,450014637,Leeds Road Barnes Road,-1.356178,53.714494,450014638,Leeds Road Thunderhead Ridge,-1.352126,53.713906
+143,rsf_0003,rl_0003_17,450014638,Leeds Road Thunderhead Ridge,-1.352126,53.713906,450014639,Leeds Road Joffre Avenue,-1.348374,53.715477
+145,rsf_0003,rl_0003_18,450014639,Leeds Road Joffre Avenue,-1.348374,53.715477,450014645,Lisheen Avenue Larch Court,-1.347431,53.716703
+147,rsf_0003,rl_0003_19,450014645,Lisheen Avenue Larch Court,-1.347431,53.716703,450014647,Lisheen Avenue Thornhill Road,-1.348792,53.718814
+149,rsf_0003,rl_0003_20,450014647,Lisheen Avenue Thornhill Road,-1.348792,53.718814,450014648,Lisheen Avenue Blands Close,-1.348760,53.719964
+151,rsf_0003,rl_0003_21,450014648,Lisheen Avenue Blands Close,-1.348760,53.719964,450050203,Lisheen Avenue,-1.348403,53.721472
+153,rsf_0003,rl_0003_22,450050203,Lisheen Avenue,-1.348403,53.721472,450014651,Smawthorne Lane Lisheen Avenue,-1.349320,53.721945
+155,rsf_0003,rl_0003_23,450014651,Smawthorne Lane Lisheen Avenue,-1.349320,53.721945,450050205,Smawthorne Lane Smawthorne Avenue,-1.352910,53.721092
+157,rsf_0003,rl_0003_24,450050205,Smawthorne Lane Smawthorne Avenue,-1.352910,53.721092,450014653,Beancroft Road Hugh Street,-1.355670,53.721943
+159,rsf_0003,rl_0003_25,450014653,Beancroft Road Hugh Street,-1.355670,53.721943,450023668,Beancroft Road Cambridge Street,-1.355751,53.723552
+161,rsf_0003,rl_0003_26,450023668,Beancroft Road Cambridge Street,-1.355751,53.723552,450018668,S1 Station Road,-1.353494,53.725446
+163,rsf_0003,rl_0003_27,450018668,S1 Station Road,-1.353494,53.725446,450030341,Castleford Bus Station K,-1.357687,53.724803
+165,rsf_0004,rl_0004_1,450030267,Stand J Pontefract Bus Station,-1.308757,53.692919,450018267,Southgate General Hospital,-1.309533,53.690829
+166,rsf_0004,rl_0004_2,450018267,Southgate General Hospital,-1.309533,53.690829,450018270,Southgate Jubilee Way,-1.312844,53.689329
+167,rsf_0004,rl_0004_3,450018270,Southgate Jubilee Way,-1.312844,53.689329,450018273,Wakefield Road Beechwood Avenue,-1.320399,53.687485
+168,rsf_0004,rl_0004_4,450018273,Wakefield Road Beechwood Avenue,-1.320399,53.687485,450018276,Wakefield Road Kings Mead,-1.322914,53.686447
+169,rsf_0004,rl_0004_5,450018276,Wakefield Road Kings Mead,-1.322914,53.686447,450018277,Wakefield Road Queens Avenue,-1.325554,53.685186
+170,rsf_0004,rl_0004_6,450018277,Wakefield Road Queens Avenue,-1.325554,53.685186,450018390,Wakefield Road Osgoldcross Crematorium,-1.332988,53.681363
+171,rsf_0004,rl_0004_7,450018390,Wakefield Road Osgoldcross Crematorium,-1.332988,53.681363,450018391,Pontefract Road Purston Jaglin,-1.337371,53.679005
+172,rsf_0004,rl_0004_8,450018391,Pontefract Road Purston Jaglin,-1.337371,53.679005,450018393,Pontefract Road Houndhill Lane,-1.341057,53.676617
+173,rsf_0004,rl_0004_9,450018393,Pontefract Road Houndhill Lane,-1.341057,53.676617,450018394,Pontefract Road Sports Centre,-1.345145,53.674608
+174,rsf_0004,rl_0004_10,450018394,Pontefract Road Sports Centre,-1.345145,53.674608,450018208,Little Lane Tarn Road,-1.347071,53.673396
+175,rsf_0004,rl_0004_11,450018208,Little Lane Tarn Road,-1.347071,53.673396,450018206,Wentbridge Road Little Lane,-1.345499,53.672291
+176,rsf_0004,rl_0004_12,450018206,Wentbridge Road Little Lane,-1.345499,53.672291,450026336,Wentbridge Road Wellgarth Rd,-1.348630,53.671427
+177,rsf_0004,rl_0004_13,450026336,Wentbridge Road Wellgarth Rd,-1.348630,53.671427,450018212,Hall Street Wesley Place,-1.350643,53.673424
+178,rsf_0004,rl_0004_14,450018212,Hall Street Wesley Place,-1.350643,53.673424,450018399,Pontefract Road Ackworth Road,-1.352507,53.674234
+179,rsf_0004,rl_0004_15,450018399,Pontefract Road Ackworth Road,-1.352507,53.674234,450018400,F6 Pontefract Road,-1.357304,53.674386
+2,rsf_0004,rl_0004_16,450018400,F6 Pontefract Road,-1.357304,53.674386,450017712,Wakefield Road F2 St Martins Close,-1.361566,53.674831
+5,rsf_0004,rl_0004_17,450017712,Wakefield Road F2 St Martins Close,-1.361566,53.674831,450017714,Wakefield Road Lister Road,-1.364998,53.675110
+8,rsf_0004,rl_0004_18,450017714,Wakefield Road Lister Road,-1.364998,53.675110,450017722,Wentworth Road Hillcrest Avenue,-1.370239,53.674850
+11,rsf_0004,rl_0004_19,450017722,Wentworth Road Hillcrest Avenue,-1.370239,53.674850,450017720,Wentworth Road Southfield Avenue,-1.370896,53.673478
+14,rsf_0004,rl_0004_20,450017720,Wentworth Road Southfield Avenue,-1.370896,53.673478,450023759,Wentworth Road Priordale Road,-1.370528,53.672766
+17,rsf_0004,rl_0004_21,450023759,Wentworth Road Priordale Road,-1.370528,53.672766,450029064,Priory Road Huntwick Drive,-1.367577,53.672715
+20,rsf_0004,rl_0004_22,450029064,Priory Road Huntwick Drive,-1.367577,53.672715,450017716,Priory Road Hardwick Road,-1.363935,53.673298
+23,rsf_0004,rl_0004_23,450017716,Priory Road Hardwick Road,-1.363935,53.673298,450017715,Priory Road Girnhill Lane,-1.360723,53.673505
+26,rsf_0004,rl_0004_24,450017715,Priory Road Girnhill Lane,-1.360723,53.673505,450018213,F4 Station Lane Fearnley Street,-1.359054,53.675743
+112,rsf_0004,rl_0004_25,450018213,F4 Station Lane Fearnley Street,-1.359054,53.675743,450018215,Station Lane Featherstone Station,-1.358529,53.678437
+114,rsf_0004,rl_0004_26,450018215,Station Lane Featherstone Station,-1.358529,53.678437,450018218,Station Lane Cedar Walk,-1.358892,53.680443
+116,rsf_0004,rl_0004_27,450018218,Station Lane Cedar Walk,-1.358892,53.680443,450018219,Green Lane Market Street,-1.357645,53.681776
+118,rsf_0004,rl_0004_28,450018219,Green Lane Market Street,-1.357645,53.681776,450018222,Featherstone Lane Dickinson Terrace,-1.353656,53.683256
+120,rsf_0004,rl_0004_29,450018222,Featherstone Lane Dickinson Terrace,-1.353656,53.683256,450018224,Featherstone Lane Dixon Street,-1.354094,53.685325
+122,rsf_0004,rl_0004_30,450018224,Featherstone Lane Dixon Street,-1.354094,53.685325,450018226,Featherstone Lane Halton Street,-1.354581,53.687117
+124,rsf_0004,rl_0004_31,450018226,Featherstone Lane Halton Street,-1.354581,53.687117,450018228,Featherstone Lane Highfield Close,-1.357178,53.690627
+126,rsf_0004,rl_0004_32,450018228,Featherstone Lane Highfield Close,-1.357178,53.690627,450018229,Willow Lane Willow Garth,-1.358874,53.693611
+128,rsf_0004,rl_0004_33,450018229,Willow Lane Willow Garth,-1.358874,53.693611,450018230,Cutsyke Road Church Lane,-1.361248,53.695844
+130,rsf_0004,rl_0004_34,450018230,Cutsyke Road Church Lane,-1.361248,53.695844,450026333,Cutsyke Road Cemetery,-1.363746,53.697925
+132,rsf_0004,rl_0004_35,450026333,Cutsyke Road Cemetery,-1.363746,53.697925,450018234,Cutsyke Road Castleford Lane,-1.368003,53.706953
+134,rsf_0004,rl_0004_36,450018234,Cutsyke Road Castleford Lane,-1.368003,53.706953,450029629,Cutsyke Road Blenheim Way,-1.367495,53.710537
+136,rsf_0004,rl_0004_37,450029629,Cutsyke Road Blenheim Way,-1.367495,53.710537,450018236,Aketon Road WMC,-1.365554,53.713646
+138,rsf_0004,rl_0004_38,450018236,Aketon Road WMC,-1.365554,53.713646,450014636,Leeds Road Old School Ct,-1.360571,53.714509
+140,rsf_0004,rl_0004_39,450014636,Leeds Road Old School Ct,-1.360571,53.714509,450014637,Leeds Road Barnes Road,-1.356178,53.714494
+142,rsf_0004,rl_0004_40,450014637,Leeds Road Barnes Road,-1.356178,53.714494,450014638,Leeds Road Thunderhead Ridge,-1.352126,53.713906
+144,rsf_0004,rl_0004_41,450014638,Leeds Road Thunderhead Ridge,-1.352126,53.713906,450014639,Leeds Road Joffre Avenue,-1.348374,53.715477
+146,rsf_0004,rl_0004_42,450014639,Leeds Road Joffre Avenue,-1.348374,53.715477,450014645,Lisheen Avenue Larch Court,-1.347431,53.716703
+148,rsf_0004,rl_0004_43,450014645,Lisheen Avenue Larch Court,-1.347431,53.716703,450014647,Lisheen Avenue Thornhill Road,-1.348792,53.718814
+150,rsf_0004,rl_0004_44,450014647,Lisheen Avenue Thornhill Road,-1.348792,53.718814,450014648,Lisheen Avenue Blands Close,-1.348760,53.719964
+152,rsf_0004,rl_0004_45,450014648,Lisheen Avenue Blands Close,-1.348760,53.719964,450050203,Lisheen Avenue,-1.348403,53.721472
+154,rsf_0004,rl_0004_46,450050203,Lisheen Avenue,-1.348403,53.721472,450014651,Smawthorne Lane Lisheen Avenue,-1.349320,53.721945
+156,rsf_0004,rl_0004_47,450014651,Smawthorne Lane Lisheen Avenue,-1.349320,53.721945,450050205,Smawthorne Lane Smawthorne Avenue,-1.352910,53.721092
+158,rsf_0004,rl_0004_48,450050205,Smawthorne Lane Smawthorne Avenue,-1.352910,53.721092,450014653,Beancroft Road Hugh Street,-1.355670,53.721943
+160,rsf_0004,rl_0004_49,450014653,Beancroft Road Hugh Street,-1.355670,53.721943,450023668,Beancroft Road Cambridge Street,-1.355751,53.723552
+162,rsf_0004,rl_0004_50,450023668,Beancroft Road Cambridge Street,-1.355751,53.723552,450018668,S1 Station Road,-1.353494,53.725446
+164,rsf_0004,rl_0004_51,450018668,S1 Station Road,-1.353494,53.725446,450030341,Castleford Bus Station K,-1.357687,53.724803
