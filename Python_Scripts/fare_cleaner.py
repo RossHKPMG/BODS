@@ -123,27 +123,33 @@ class FareCleaner:
 
                 final_df = pd.concat([final_df, tariff_combined_df], ignore_index=True)
 
-        elements = str(self.fare_json_folder).split('/')
-        final_df.insert(0, column='Passenger Type', value=elements[10])
-        final_df.insert(0, column='Route Type', value=elements[9])
-        final_df.insert(0, column='Ticket Type', value=elements[8])
+        self.elements = str(self.fare_json_folder).split('/')
+        final_df.insert(0, column='Passenger Type', value=self.elements[9])
+        final_df.insert(0, column='Route Type', value=self.elements[8])
+        final_df.insert(0, column='Ticket Type', value=self.elements[7])
 
         return final_df   
 
-    def df_combine(self,x1,y1, z1, x2, y2, z2):
+    def df_combine(self, *args):
 
-        self.x1 = x1
-        self.y1 = y1
-        self.z1 = z1
-        self.x2 = x2
-        self.y2 = y2
-        self.z2 = z2
-
-        combined_df = pd.concat([x1,y1,z1,x2,y2,z2], ignore_index=True)
-
-        elements = str(self.fare_json_folder).split('/')
-
-        string = 'NCTR_' + elements[8] + '.csv'
+        combined_df = pd.DataFrame()
+    
+        for arg in args:
+            for a in arg:
+                combined_df = pd.concat([a, combined_df], ignore_index=True)
+                
+        return combined_df
+    
+    def df_to_xlsx(self, df):
+        
+        self.df = df
+        string = 'NCTR_' + self.elements[7] + '.xlsx'
         string = string.replace(' ','')
-
-        combined_df.to_csv(string, index=False)
+        self.df.to_excel(string, index=False)
+        
+    def df_to_csv(self, df):
+        
+        self.df = df
+        string = 'NCTR_' + self.elements[7] + '.csv'
+        string = string.replace(' ','')
+        self.df.to_csv(string, index=False)
