@@ -1,23 +1,38 @@
 try:
-    from Python_Scripts.data_extractor import FaresExtractor
-    from Python_Scripts.fare_cleaner import FareCleaner
-    from Python_Scripts.class_fare_cleaner import FareCleanerNew
+    #from Python_Scripts.fare_extractor_nctr import FaresExtractor
+    from Python_Scripts.fare_extractor_nibs import FaresExtractor
 except:
-    from data_extractor import FaresExtractor
-    from fare_cleaner import FareCleaner
-    from class_fare_cleaner import FareCleanerNew
+    #from fare_extractor_nctr import FaresExtractor
+    from fare_extractor_nibs import FaresExtractor
 
 import os
 
-# api = 
+api = 'ab70c6d46880d6fb3418a656e5c8e40fb5aa8f2c'
 
-# fare_data_object =  FareCleanerNew(api_key = api,
-#                                     nocs  =['BPTR','RBTS'],
-#                                     status = 'published'
-#                                     limit = 0,
-#                                     offset = 0,
-#                                     bods_compliant=True
-#                                     )
+fdo =  FaresExtractor(
+                        api_key = api,
+                        nocs = ['NIBS'],
+                        status = 'published',
+                        limit = 10,
+                        offset = 0
+                    )
+
+
+
+### Initial Grabbing Fare Data, Folder Creation, JSON Conversion ###
+
+fdo.grab_fare_data()
+
+xml_folder = "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS Project/BODS/Fare XML/"
+json_folder = "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS Project/BODS/Fare JSON/"
+single_catch = ['single', 'Single', 'sgl', 'SGL']
+
+fdo.json_folder_creation(xml_folder, json_folder)
+fdo.json_conversion()
+fdo.single_ticket_extraction(single_catch)
+
+df = fdo.df_creation()
+print(df)
 
 
 
@@ -27,15 +42,6 @@ import os
 # SRC = "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS/Fares Data"
 
 
-# nctr_pathways = [
-#     "C:/Users/Ross/Documents/BODS Project/BODS/Nottingham City Transport Ltd_25 JSON/Single Ticket/Inbound/Adult",
-#     "C:/Users/Ross/Documents/BODS Project/BODS/Nottingham City Transport Ltd_25 JSON/Single Ticket/Inbound/Child",
-#     "C:/Users/Ross/Documents/BODS Project/BODS/Nottingham City Transport Ltd_25 JSON/Single Ticket/Inbound/Student",
-#     "C:/Users/Ross/Documents/BODS Project/BODS/Nottingham City Transport Ltd_25 JSON/Single Ticket/Outbound/Adult",
-#     "C:/Users/Ross/Documents/BODS Project/BODS/Nottingham City Transport Ltd_25 JSON/Single Ticket/Outbound/Child",
-#     "C:/Users/Ross/Documents/BODS Project/BODS/Nottingham City Transport Ltd_25 JSON/Single Ticket/Outbound/Student",
-# ]
-
 ### Fares Data XML extraction and File Clean       ###
 ###                                                ###
 ### ~ 12 mins to complete full Fares Data Download ###
@@ -44,8 +50,8 @@ import os
 # fares_data_object.xml_extract()
 # fares_data_object.tree_clean()
 
-fco = FareCleanerNew()
-df_list = [fco.df_creation(p) for p in nctr_pathways]
-fco.df_to_xlsx(df_list[-1])
-#fco.df_to_csv(df_list[-1])
+# fco = FareCleanerNew()
+# df_list = [fco.df_creation(p) for p in nctr_pathways]
+# fco.df_to_xlsx(df_list[-1])
+# #fco.df_to_csv(df_list[-1])
 
