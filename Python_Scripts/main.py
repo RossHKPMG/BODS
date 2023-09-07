@@ -1,57 +1,48 @@
 try:
-    #from Python_Scripts.fare_extractor_nctr import FaresExtractor
-    from Python_Scripts.fare_extractor_nibs import FaresExtractor
+    #from Python_Scripts.fare_extractor_nctr import FaresExtractorNCTR
+    #from Python_Scripts.fare_extractor_nibs import FaresExtractorNIBS
+    from Python_Scripts.fare_extractor_first import FaresExtractorFIRST
 except:
-    #from fare_extractor_nctr import FaresExtractor
-    from fare_extractor_nibs import FaresExtractor
-
-import os
-
-api = 'ab70c6d46880d6fb3418a656e5c8e40fb5aa8f2c'
-
-fdo =  FaresExtractor(
-                        api_key = api,
-                        nocs = ['NIBS'],
-                        status = 'published',
-                        limit = 10,
-                        offset = 0
-                    )
+    #from fare_extractor_nctr import FaresExtractorNCTR
+    #from fare_extractor_nibs import FaresExtractorNIBS
+    from fare_extractor_first import FaresExtractorFIRST
 
 
 
-### Initial Grabbing Fare Data, Folder Creation, JSON Conversion ###
+api = "ab70c6d46880d6fb3418a656e5c8e40fb5aa8f2c"
 
-fdo.grab_fare_data()
-
-xml_folder = "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS Project/BODS/Fare XML/"
-json_folder = "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS Project/BODS/Fare JSON/"
-single_catch = ['single', 'Single', 'sgl', 'SGL']
-
-fdo.json_folder_creation(xml_folder, json_folder)
-fdo.json_conversion()
-fdo.single_ticket_extraction(single_catch)
-
-df = fdo.df_creation()
-print(df)
+xml_folder = (
+    "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS Data/Fare XML/"
+)
+json_folder = (
+    "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS Data/Fare JSON/"
+)
 
 
 
+###########################################################
+###                                                     ###
+###          Fares Extraction for NIBS (Essex)          ###
+###                                                     ###
+###########################################################
 
+# nibs = FaresCleaner(
+#     xml_folder, json_folder, api_key=api, nocs=["NIBS"], status="published", limit=25, offset=0
+# )
+# nibs.grab_fare_data()
 
-### Source Files from
-# SRC = "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS/Fares Data"
+# nctr = FaresCleaner(
+#     xml_folder, json_folder, api_key=api, nocs=["NCTR"], status="published", limit=25, offset=0
+# )
+# nctr.grab_fare_data()
 
+# ysqu = FaresExtractorNIBS(
+#     xml_folder, json_folder, api_key=api, nocs=["YSQU"], status="published", limit=25, offset=0
+# )
+# ysqu.grab_fare_data()
+# ysqu.df_creation()
 
-### Fares Data XML extraction and File Clean       ###
-###                                                ###
-### ~ 12 mins to complete full Fares Data Download ###
-
-# fares_data_object = FaresExtractor(SRC)
-# fares_data_object.xml_extract()
-# fares_data_object.tree_clean()
-
-# fco = FareCleanerNew()
-# df_list = [fco.df_creation(p) for p in nctr_pathways]
-# fco.df_to_xlsx(df_list[-1])
-# #fco.df_to_csv(df_list[-1])
-
+first_wy = FaresExtractorFIRST(
+    xml_folder, json_folder, api_key=api, nocs=["FMAN"], status="published", limit=25, offset=0
+)
+first_wy.grab_fare_data()

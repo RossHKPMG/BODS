@@ -1,8 +1,9 @@
 ### PACKAGES ###
 
-import os, json, re, locale, requests, shutil, xmltodict, itertools, openpyxl
+import os, json, re, locale, requests, shutil, xmltodict, itertools, openpyxl, pickle
 
 import pandas as pd 
+import xml.etree.ElementTree as ET
 from urllib.request import urlopen
 from zipfile import ZipFile, is_zipfile
 from io import BytesIO
@@ -12,7 +13,7 @@ locale.setlocale(locale.LC_ALL, 'gb_GB')
 
 ### FARES EXTRACTOR FOR OPERATOR NIBS IN ESSEX ###
 
-class FaresExtractorNIBS:
+class FaresExtractorFIRST:
 
     error_list = []
 
@@ -31,80 +32,131 @@ class FaresExtractorNIBS:
         self.final_df = pd.DataFrame()
 
 
-    ### Grabbing XML Files --> JSON Folder Creation --> JSON Conversion --> Single Ticket Extraction ### 
+   
 
     def grab_fare_data(self):
 
+        # Check for each NOC that is passed through for the API reuest
+        # This is still needed even if it is just 1 NOC, as ispassed through within a list and not a single string value
+
         for i in range(0, len(self.nocs)):
 
+
+            # Constructing the url string that will be passed through for the API request
             request_string = "https://data.bus-data.dft.gov.uk/api/v1/fares/dataset?" + "noc=" + self.nocs[i] + "&status=" + self.status + "&limit=" + str(self.limit) + "&offset=" + str(self.offset) + "&api_key=" + str(self.api_key)
             
+            # request the data from the API URL
             data = requests.get(request_string)
+
+            # Converting request to JSON format
             response_data = data.json()
+
+            # Since there can be multiple responses from the requests, we want to check how many there are
+            # for when we need to loop through the data later on
             num_results = len(response_data['results'])
 
+
+            # Checking to see if the number of responses is greater than 1
             if num_results > 1:
 
+                # Since there are multiple response, that means there are multiple URLs that link to
+                # different download links containing the fares .xml data.
+                # Therefore we jump into a loop and perform the below for each response.
+
                 for key in range(0, num_results):
+
+
+                    # Grabbing the operator name for the request NOC
                     self.operator_name = response_data["results"][key]["operatorName"]
-                    url = response_data["results"][key]["url"]
-                    parent_dir = self.xml_folder
-                    path = os.path.join(parent_dir, self.operator_name)
+
+                    # Grabbing the URL that links to the zip/xml files
+                    file_url = response_data["results"][key]["url"]
+                    
+                    # Defining the path that the xml files will be saved into for conversion to JSON
+                    path = os.path.join(self.xml_folder, self.operator_name)
+
+                    # Check to see if the filepath for the operator already exists
                     if os.path.exists(path):
-                        with urlopen(url) as in_stream:
-                            if is_zipfile(in_stream):
-                                with ZipFile(BytesIO(in_stream.read())) as zfile:
-                                    zfile.extractall(path)
-                            else:
-                                filename = in_stream.headers.get_filename()
-                                xml = open(path + "/" + filename, "w")
-                                xml.write(in_stream.read().decode('utf-8'))
-                                xml.close()
-                                
 
+                        # Download request for the zip/xml URL
+                        downloaded_file = requests.get(url=file_url)
+
+                        # If the content type of the request is a zip file, then we extract the
+                        # contents of the zip file to the specified operators folder
+                        if 'zip' in downloaded_file.headers['Content-Type']:
+                            with ZipFile(BytesIO(downloaded_file.content)) as zfile:
+                                zfile.extractall(path)
+
+                        # If the content type of the request is a xml file, then we simply
+                        # write the contents of the xml file to the specified operators folder
+                        # using the extracted filename
+                        elif 'xml' in downloaded_file.headers['Content-Type']:
+                            fname = re.findall("filename=(.+)", downloaded_file.headers['content-disposition'])[0]
+                            fname = fname.strip('\"')
+                            with open((path + "/" + fname), "wb") as xml_file:
+                                xml_file.write(BytesIO(downloaded_file.content).getbuffer())
+                                
+                    # If the filepath for the operator does not exist
                     else:
-                        os.mkdir(path)
-                        with urlopen(url) as in_stream:
-                            if is_zipfile(in_stream):
-                                with ZipFile(BytesIO(in_stream.read())) as zfile:
-                                    zfile.extractall(path)
-                            else:
-                                filename = in_stream.headers.get_filename()
-                                xml = open(path + "/" + filename, "w")
-                                xml.write(in_stream.read().decode('utf-8'))
-                                xml.close()
-                                
 
+                        # create new folder/path for operator
+                        os.mkdir(path)
+
+                        downloaded_file = requests.get(url=file_url)
+
+                        if 'zip' in downloaded_file.headers['Content-Type']:
+                            with ZipFile(BytesIO(downloaded_file.content)) as zfile:
+                                zfile.extractall(path)
+
+                        elif 'xml' in downloaded_file.headers['Content-Type']:
+                            fname = re.findall("filename=(.+)", downloaded_file.headers['content-disposition'])[0]
+                            fname = fname.strip('\"')
+                            with open((path + "/" + fname), "wb") as xml_file:
+                                xml_file.write(BytesIO(downloaded_file.content).getbuffer())
+                            
+
+            # Checking to see if the number of responses is equal to 1
             elif num_results == 1:
 
                 self.operator_name = response_data["results"][0]["operatorName"]
-                url = response_data["results"][0]["url"]
-                parent_dir = self.xml_folder
-                path = os.path.join(parent_dir, self.operator_name)
+                file_url = response_data["results"][0]["url"]
+                path = os.path.join(self.xml_folder, self.operator_name)
+
                 if os.path.exists(path):
-                    with urlopen(url) as in_stream:
-                        if is_zipfile(in_stream):
-                            with ZipFile(BytesIO(in_stream.read())) as zfile:
-                                zfile.extractall(path)
-                        else:
-                            filename = in_stream.headers.get_filename()
-                            xml = open(path + "/" + filename, "w")
-                            xml.write(in_stream.read().decode('utf-8'))
-                            xml.close()
+
+                    downloaded_file = requests.get(url=file_url)
+
+                    if 'zip' in downloaded_file.headers['Content-Type']:
+                        with ZipFile(BytesIO(downloaded_file.content)) as zfile:
+                            zfile.extractall(path)
+
+                    elif 'xml' in downloaded_file.headers['Content-Type']:
+                            fname = re.findall("filename=(.+)", downloaded_file.headers['content-disposition'])[0]
+                            fname = fname.strip('\"')
+                            with open((path + "/" + fname), "wb") as xml_file:
+                                xml_file.write(BytesIO(downloaded_file.content).getbuffer())
+
                 else:
+
                     os.mkdir(path)
-                    with urlopen(url) as in_stream:
-                        if is_zipfile(in_stream):
-                            with ZipFile(BytesIO(in_stream.read())) as zfile:
-                                zfile.extractall(path)
-                        else:
-                            filename = in_stream.headers.get_filename()
-                            xml = open(path + "/" + filename, "w")
-                            xml.write(in_stream.read().decode('utf-8'))
-                            xml.close()
 
-        self.single_ticket_extraction()
+                    downloaded_file = requests.get(url=file_url)
 
+                    if 'zip' in downloaded_file.headers['Content-Type']:
+                        with ZipFile(BytesIO(downloaded_file.content)) as zfile:
+                            zfile.extractall(path)
+
+                    elif 'xml' in downloaded_file.headers['Content-Type']:
+                            fname = re.findall("filename=(.+)", downloaded_file.headers['content-disposition'])[0]
+                            fname = fname.strip('\"')
+                            with open((path + "/" + fname), "wb") as xml_file:
+                                xml_file.write(BytesIO(downloaded_file.content).getbuffer())
+            
+            print("[Files extracted successfully]")
+        
+        self.json_folder_creation()
+
+       
     def json_folder_creation(self):
 
         def ig_f(dir, files):
@@ -116,17 +168,20 @@ class FaresExtractorNIBS:
 
     def json_conversion(self):
 
-        for subdir, dirs, files in os.walk(self.xml_folder):
-            for file in files:
-                filepath = subdir + os.sep + file
-                if filepath.endswith(".xml"):
-                    with open(filepath,'r') as test_file:
-                        obj = xmltodict.parse(test_file.read())
-                        jd = json.dumps(obj, ensure_ascii=False, indent=4)
-                        new_filepath = filepath.replace(self.xml_folder, self.json_folder)
-                        final_filepath = new_filepath.replace('.xml', '.json')
-                        with open(final_filepath, "w", encoding='utf-8') as jf:
-                            jf.write(jd)
+        subdir = self.xml_folder + self.operator_name
+        for file in os.listdir(subdir):
+            fpath = subdir + "/" + file
+            spath = (fpath.replace(self.xml_folder, self.json_folder)).replace('.xml', '.json')
+            if fpath.endswith(".xml"):
+                xmlf = ET.tostring(ET.parse(fpath).getroot())
+                dictf = xmltodict.parse(xmlf, attr_prefix="@", cdata_key="#text", dict_constructor=dict)
+                jsonf = json.dumps(dictf, ensure_ascii=False, indent=4)
+                with open(spath, "w") as f:
+                    f.write(jsonf)
+                    
+        print("[Fares converted successfully]")
+
+                        
     
     def single_ticket_extraction(self):
 

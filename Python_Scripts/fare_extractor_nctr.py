@@ -1,29 +1,30 @@
-import os
+### PACKAGES ###
+
+import os, json, re, locale, requests, shutil, xmltodict, itertools, openpyxl
+
 import pandas as pd 
-import json
-import re
-import locale
-locale.setlocale(locale.LC_ALL, 'gb_GB')
-import requests
-import shutil
-import os
 from urllib.request import urlopen
-from shutil import copyfileobj
 from zipfile import ZipFile
 from io import BytesIO
-import xmltodict
 
-class FaresExtractor:
+locale.setlocale(locale.LC_ALL, 'gb_GB')
+
+
+### FARES EXTRACTOR FOR OPERATOR NCTR IN NOTTINGHAM ###
+
+class FaresExtractorNCTR:
 
     error_list = []
 
-    def __init__(self, api_key,  nocs=None, status='published', limit=10_000, offset=0):
+    def __init__(self, xml_folder, json_folder, api_key,  nocs=None, status='published', limit=10_000, offset=0):
         
         self.api_key = api_key
         self.nocs = nocs
         self.status = status
         self.limit = limit
         self.offset = offset
+        self.xml_folder = xml_folder
+        self.json_folder = json_folder
         
         self.final_df = pd.DataFrame()
 
@@ -38,14 +39,32 @@ class FaresExtractor:
             request_string = "https://data.bus-data.dft.gov.uk/api/v1/fares/dataset?" + "noc=" + self.nocs[i] + "&status=" + self.status + "&limit=" + str(self.limit) + "&offset=" + str(self.offset) + "&api_key=" + str(self.api_key)
             
             data = requests.get(request_string)
-            print(data)
             response_data = data.json()
+            num_results = len(response_data['results'])
 
-            for key in range(0, (len(response_data))):
-                operator_name = response_data["results"][key]["operatorName"]
-                url = response_data["results"][key]["url"]
+            if num_results > 1:
+
+                for key in range(0, num_results):
+                    self.operator_name = response_data["results"][key]["operatorName"]
+                    url = response_data["results"][key]["url"]
+                    parent_dir = "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS Project/BODS/Fare XML/"
+                    path = os.path.join(parent_dir, self.operator_name)
+                    if os.path.exists(path):
+                        with urlopen(url) as in_stream:
+                            with ZipFile(BytesIO(in_stream.read())) as zfile:
+                                zfile.extractall(path)
+                    else:
+                        os.mkdir(path)
+                        with urlopen(url) as in_stream:
+                            with ZipFile(BytesIO(in_stream.read())) as zfile:
+                                zfile.extractall(path)
+
+            elif num_results == 1:
+
+                self.operator_name = response_data["results"][0]["operatorName"]
+                url = response_data["results"][0]["url"]
                 parent_dir = "C:/Users/rosshamilton/OneDrive - KPMG/Documents/BODS Project/BODS/Fare XML/"
-                path = os.path.join(parent_dir, operator_name)
+                path = os.path.join(parent_dir, self.operator_name)
                 if os.path.exists(path):
                     with urlopen(url) as in_stream:
                         with ZipFile(BytesIO(in_stream.read())) as zfile:
@@ -56,15 +75,12 @@ class FaresExtractor:
                         with ZipFile(BytesIO(in_stream.read())) as zfile:
                             zfile.extractall(path)
 
-    def json_folder_creation(self, xml_folder, json_folder):
-
-        self.xml_folder = xml_folder
-        self.json_folder = json_folder
+    def json_folder_creation(self):
 
         def ig_f(dir, files):
             return [f for f in files if os.path.isfile(os.path.join(dir, f))]
 
-        shutil.copytree(self.xml_folder, self.json_folder, ignore=ig_f)
+        shutil.copytree(self.xml_folder, self.json_folder, ignore=ig_f, dirs_exist_ok=True)
 
     def json_conversion(self):
 
@@ -81,13 +97,12 @@ class FaresExtractor:
                             jf.write(jd)
     
     def single_ticket_extraction(self, single_catch):
-
-        for subdir, dirs, files in os.walk(self.json_folder):
-            for file in files:
-                filepath = subdir + os.sep + file   
-                not_contains = all(item not in filepath for item in single_catch)
-                if not_contains:
-                    os.remove(filepath)
+        
+        subdir = self.xml_folder + self.operator_name
+        for file in os.listdir(subdir):
+            if file.startswith(single_catch) == False:
+                filepath = subdir + '/' + file
+                os.remove(filepath)
 
 
     ### Open each JSON file --> Extract Nesscessary Fare Info --> Create DF --> Combine DFs --> Clean --> Convert to .xlsx
