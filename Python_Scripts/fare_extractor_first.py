@@ -420,12 +420,12 @@ class FaresExtractorFIRST:
         cols = ['Line ID', 'Line Name', 'Line Public Code', 'Tariff Route ID', 'Fare Zone Start ID', 'Fare Zone Start Name', 'Tariff Route Start Name', 'Tariff Route Start ID', 'Fare Zone End ID', 'Fare Zone End Name', 'Tariff Route End Name', 'Tariff Route End ID', 'Tariff Route Cost (£)']
         self.combined_df = self.combined_df[cols]
 
-        elements = self.file.split('_')
-        route_ticket = re.findall('[A-Z][^A-Z]*', elements[3])
+        # elements = self.file.split('_')
+        # route_ticket = re.findall('[A-Z][^A-Z]*', elements[3])
 
-        self.combined_df['Passenger Type'] = route_ticket[0]
-        self.combined_df['Route Type'] = elements[2]
-        self.combined_df['Ticket Type'] = route_ticket[1]
+        # self.combined_df['Passenger Type'] = route_ticket[0]
+        # self.combined_df['Route Type'] = elements[2]
+        # self.combined_df['Ticket Type'] = route_ticket[1]
         
         return self.combined_df
     
