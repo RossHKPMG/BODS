@@ -1,7 +1,7 @@
 try:
-    from Python_Scripts.fare_data_extractor import FareDataDownloader, FareDataExtractor
+    from Python_Scripts.data_extractor import FareDataDownloader, FareDataExtractor
 except:
-    from fare_data_extractor import FareDataDownloader, FareDataExtractor
+    from data_extractor import FareDataDownloader, FareDataExtractor
     
 
 
@@ -22,9 +22,10 @@ xml_folder = (
 ###########################################################
 
 # fares = FareDataDownloader(
-#     xml_folder, api_key=api, nocs=["YSQU"], status="published", limit=40, offset=0
+#     xml_folder, api_key=api, nocs=["GAGS"], status="published", limit=40, offset=0
 # )
-# fares.grab_fare_data()
+# #fares.grab_fare_data()
+# fares.single_ticket_extraction()
 
 data = FareDataExtractor(
     xml_folder
