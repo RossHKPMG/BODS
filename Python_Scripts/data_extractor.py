@@ -13,6 +13,9 @@ from unidecode import unidecode
 
 locale.setlocale(locale.LC_ALL, 'gb_GB')
 
+# Probably could be done cleaner, but needed to add in many different clauses/catches due to operators saving their data in different formats/styles,
+# tried to create a one-for-all method that could be used for anything no matter the NOCs that you insert for the API request.
+
 class FareDataDownloader:
 
     error_list = []
@@ -174,20 +177,22 @@ class FareDataDownloader:
         
     def single_ticket_extraction(self):
 
-        catch = ["Single", "single", "SGL", "sgl", "Sgl", "Sin", "sin", "OneWay", "oneway"]
-        #passenger_type = ["Adult", "adult", "Child", "child"]
+        # Again , this was only for initial POC testing purposes to filter out Single/One-Way tickets for Adults/Children
+
+        single_catch = ["Single", "single", "SGL", "sgl", "Sgl", "Sin", "sin", "OneWay", "oneway"]
+        passenger_catch = ['Adult', 'AD', 'Child', 'child', 'Chd', 'Ad', 'adult', 'ADULT','CH']
         path = self.xml_folder
         for operator in os.listdir(path):
             path_1 = path + "/" + operator
             for folder in os.listdir(path_1):
                 path_2 = path_1 + "/" + folder
                 for file in os.listdir(path_2):
-                    not_contains_single = all(item not in file for item in catch)
-                    #not_contains_passenger = all(item not in file for item in passenger_type)
+                    not_contains_single = all(item not in file for item in single_catch)
+                    not_contains_passenger = all(item not in file for item in passenger_catch)
                     if not_contains_single:
                         os.remove(path_2 + "/" + file)
-                    # elif not_contains_passenger:
-                    #     os.remove(path_2 + "/" + file)
+                    elif not_contains_passenger:
+                        os.remove(path_2 + "/" + file)
 
         print("[Single Tickets Extracted]")
 
@@ -213,30 +218,42 @@ class FareDataExtractor:
 
                     if "_FF_" in file:
 
+                        # Instance where instead of having multiple different fares attached to routes, there would just be a single Flat Fare attched to all routes (in this case something similar to the £2 government scheme)
+
                         filepath = noc_path + "/" + file
                         print(filepath)
 
                         self.root = ET.parse(filepath).getroot()
                         self.namespace = self.root.nsmap
+
+                        # Grabbing necessary infor for visualization and data purposes
                         
                         self.p_type = self.get_p_type()
-                        self.r_type = self.get_r_type()
+                        self.d_type = self.get_d_type(file)
                         self.ff_amount = self.get_ff_amount()
+                        self.fz_ids = self.get_fz_ids()
+                        self.fz_stops = self.get_fz_stops()
+                        self.noc_name = noc
 
-                        self.ff_df = self.create_flat_fare_df(self.p_type, self.r_type, self.ff_amount)
+                        self.ff_df = self.create_flat_fare_df(self.p_type, self.d_type, self.ff_amount, self.fz_ids, self.fz_stops, self.noc_name)
                         self.ff_df_combined = pd.concat([self.ff_df_combined, self.ff_df], ignore_index=True, axis=0)
 
                     else:
+
+                        # Instance where there are multiple fares attached for different routes
         
                         filepath = noc_path + "/" + file
                         print(filepath)
+
+                        # Grabbing necessary info for visualization and data purposes, more info required as we need to know what fare zones are being crossed to determine the fare given
 
                         self.root = ET.parse(filepath).getroot()
                         self.namespace = self.root.nsmap
 
                         self.line_pid = self.get_line_pid()
                         self.p_type = self.get_p_type()
-                        self.r_type = self.get_r_type()
+                        self.d_type = self.get_d_type(file)
+                        self.noc_name = noc
 
                         self.fz_ids = self.get_fz_ids()
                         self.fz_stops = self.get_fz_stops()
@@ -246,8 +263,8 @@ class FareDataExtractor:
                         self.fz_end = self.get_fz_end()
                         self.fz_price = self.get_fz_price()
                         
-                        self.fz_df = self.create_fare_zones_df(self.fz_ids, self.fz_stops, self.line_pid, self.r_type)
-                        self.t_df = self.create_tariff_df(self.fz_travelled, self.fz_start, self.fz_end, self.fz_price, self.line_pid, self.p_type, self.r_type)
+                        self.fz_df = self.create_fare_zones_df(self.fz_ids, self.fz_stops, self.line_pid, self.d_type, self.noc_name)
+                        self.t_df = self.create_tariff_df(self.fz_travelled, self.fz_start, self.fz_end, self.fz_price, self.line_pid, self.p_type, self.d_type, self.noc_name)
 
                         print("DataFramesCreated")
 
@@ -256,7 +273,11 @@ class FareDataExtractor:
                         
                         print("DataFramesCombined")
             
-
+                
+                # Some data cleaning to remove things such as unnesscessary duplicates and defining static values if operators are missing certain data points.
+                # This was just a quick/dirty method to allow for visualization purposes, but also helps in highlighting the issue where clients are not populating 
+                # their data correctly, which would make it useless when it comes to data quality.
+                
                 if len(self.ff_df_combined) > 1 and len(self.fz_df_combined) > 1:
 
                     self.actual_t_df_combined = self.t_df_combined.drop(self.t_df_combined[self.t_df_combined['Route Cost (£)'] == '0.25'].index)
@@ -264,7 +285,7 @@ class FareDataExtractor:
                     self.fz_df_combined = self.fz_df_combined.drop_duplicates(subset=self.fz_df_combined.columns.difference(["Fare Zone Stop References"]))
                     self.t_df_combined = self.t_df_combined.drop_duplicates()
                     self.actual_t_df_combined = self.actual_t_df_combined.drop_duplicates()
-                    self.ff_df_combined = self.ff_df_combined.drop_duplicates()
+                    self.ff_df_combined = self.ff_df_combined.drop_duplicates(subset=self.ff_df_combined.columns.difference(["Fare Zone Stop References"]))
 
                     # Need to add in FF json conversion and dropping duplicates
                     self.routes_to_json(self.fz_df_combined, self.t_df_combined, self.actual_t_df_combined, operator, noc)
@@ -293,7 +314,7 @@ class FareDataExtractor:
                 
                 elif len(self.ff_df_combined) > 1 and len(self.fz_df_combined) == 0:
 
-                    self.ff_df_combined = self.ff_df_combined.drop_duplicates()
+                    self.ff_df_combined = self.ff_df_combined.drop_duplicates(subset=self.ff_df_combined.columns.difference(["Fare Zone Stop References"]))
                     self.ff_to_json(self.ff_df_combined, operator, noc)
                     self.fz_df_combined = pd.DataFrame()
                     self.t_df_combined = pd.DataFrame()
@@ -323,13 +344,28 @@ class FareDataExtractor:
         return data.text
 
     def get_p_type(self):
+        adult_check = ["ADULT","Adult","adult","AD","Ad","ad"]
+        child_check = ["CHILD","Child","child","CH","Ch","ch","Chd"]
         data = self.root.find("dataObjects/.//fareProducts/PreassignedFareProduct/Name", self.namespace)
-        return data.text
+        if any(ext in data.text for ext in adult_check):
+            x = "Adult"
+        elif any(ext in data.text for ext in child_check):
+            x = "Child"
+        else:
+            x = "Error Fix This"
+        return x
 
-    def get_r_type(self):
+    def get_d_type(self, file):
+        inbound_check = ["Inbound","_I_"]
+        outbound_check = ["Outbound","_O_"]
         data = self.root.find("./Description", self.namespace)
-        if data == None:
-            return "I/O"
+        if data == None: 
+            if any(ext in file for ext in inbound_check):
+                return "Inbound"
+            elif any(ext in file for ext in outbound_check):
+                return "Outbound"
+            else:
+                return "ERROR"
         else:
             if "outbound" in data.text.lower():
                 return "Outbound"
@@ -407,25 +443,29 @@ class FareDataExtractor:
 
     ############################################################
     
-    def create_flat_fare_df(self, p_type, r_type, ff_amount):
+    def create_flat_fare_df(self, p_type, r_type, ff_amount, fz_ids, fz_stops, noc):
 
         ff_dict = {
             "Passenger Type": p_type,
             "Inbound/Outbound": r_type,
-            "Flat Fare Amount": ff_amount
+            "Flat Fare Amount": ff_amount,
+            "Fare Zone ID": fz_ids,
+            "Fare Zone Stop References": fz_stops,
+            "NOC": noc
         }
         ff_df = pd.DataFrame(ff_dict, index=[0])
 
         return ff_df
 
 
-    def create_fare_zones_df(self, fz_ids, fz_s_points, line_pid, r_type):
+    def create_fare_zones_df(self, fz_ids, fz_s_points, line_pid, r_type, noc):
 
         fz_dict = {
             "Fare Zone ID": fz_ids,
             "Fare Zone Stop References": fz_s_points,
             "Route Public ID": line_pid,
-            "Inbound/Outbound": r_type,
+            "Direction": r_type,
+            "NOC": noc
         }
         for i in fz_dict["Fare Zone Stop References"]:
             for l in i:
@@ -435,7 +475,7 @@ class FareDataExtractor:
 
         return fz_df
     
-    def create_tariff_df(self, fz_travelled, fz_travelled_start, fz_travelled_end, fz_travelled_price, line_pid, p_type, r_type):
+    def create_tariff_df(self, fz_travelled, fz_travelled_start, fz_travelled_end, fz_travelled_price, line_pid, p_type, r_type, noc):
 
         t_dict = {
             "Tariff ID": fz_travelled,
@@ -444,7 +484,8 @@ class FareDataExtractor:
             "Tariff Price Band": fz_travelled_price,
             "Route Public ID": line_pid,
             "Passenger Type": p_type,
-            "Inbound/Outbound": r_type,
+            "Direction": r_type,
+            "NOC": noc
         }
         t_df = pd.DataFrame(t_dict)
         money = []
